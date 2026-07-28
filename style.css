@@ -1,76 +1,85 @@
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: 'Poppins', sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:linear-gradient(135deg,#ffd6e7,#fff8fc);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    overflow:hidden;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ffe4ef,#fff8fb);
+overflow:hidden;
 }
 
-.container{
-    width:90%;
-    max-width:700px;
-    background:white;
-    padding:40px;
-    border-radius:25px;
-    text-align:center;
-    box-shadow:0 15px 40px rgba(255,105,180,0.2);
-    animation:fadeIn 1.5s ease;
+.card{
+width:90%;
+max-width:700px;
+background:white;
+padding:40px;
+border-radius:30px;
+box-shadow:0 15px 40px rgba(255,105,180,.2);
+text-align:center;
+position:relative;
+z-index:10;
+animation:fade 1s ease;
 }
 
 h1{
-    color:#ff4f81;
-    font-size:40px;
-    margin-bottom:15px;
+color:#ff4f87;
+font-size:42px;
+margin-bottom:10px;
 }
 
 h2{
-    color:#ff7aa2;
-    margin-bottom:20px;
+color:#ff7ba5;
+margin-bottom:20px;
 }
 
-p{
-    color:#555;
-    font-size:18px;
-    line-height:1.8;
-    margin-bottom:25px;
+.small{
+color:#666;
+margin-bottom:25px;
+font-size:18px;
 }
 
 button{
-    background:#ff5c8d;
-    color:white;
-    border:none;
-    padding:15px 35px;
-    border-radius:50px;
-    font-size:18px;
-    cursor:pointer;
-    transition:.3s;
+background:#ff5f97;
+color:white;
+border:none;
+padding:15px 35px;
+border-radius:50px;
+font-size:18px;
+cursor:pointer;
+transition:.3s;
+margin-top:20px;
 }
 
 button:hover{
-    transform:scale(1.05);
-    background:#ff3f78;
+transform:scale(1.05);
+background:#ff3f80;
 }
 
 .hidden{
-    display:none;
-    margin-top:30px;
+display:none;
 }
 
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.bubble{
+background:#ffe7f1;
+padding:18px;
+margin:15px auto;
+border-radius:20px;
+width:90%;
+font-size:18px;
+color:#444;
+animation:popup .6s ease;
+box-shadow:0 5px 15px rgba(255,105,180,.15);
+}
+
+.final{
+background:#ff5f97;
+color:white;
+font-size:22px;
+font-weight:bold;
 }

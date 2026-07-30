@@ -26,25 +26,41 @@ body{
 
 /* Cards */
 
-.card{
+..card{
+    display:none;
+
     width:90%;
     max-width:420px;
-    margin:20px auto;
-    padding:22px;
-    background:rgba(255,255,255,.92);
-    backdrop-filter:blur(12px);
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    margin:40px auto;
 
-    opacity:0;
-    transform:translateY(40px);
-    transition:1s ease;
+    padding:22px;
+
+    background:rgba(255,255,255,.92);
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 .card.show{
-    opacity:1;
-    transform:translateY(0);
+    display:block;
+    animation:fade 1s;
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
 }
 
 /* Heading */

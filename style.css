@@ -46,8 +46,8 @@ body{
 
 .card.show{
     display:block;
-    animation:fade 1s;
 }
+
 
 @keyframes fade{
 

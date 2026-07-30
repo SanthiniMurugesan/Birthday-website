@@ -1,6 +1,5 @@
 // Get all pages
 const pages = document.querySelectorAll(".page");
-const heartsContainer = document.getElementById("hearts");
 
 let currentPage = 0;
 

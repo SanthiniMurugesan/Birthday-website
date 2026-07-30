@@ -26,26 +26,37 @@ body{
 
 /* Cards */
 
-..card{
+.card{
     display:none;
-
     width:90%;
     max-width:420px;
-    margin:40px auto;
-
     padding:22px;
-
-    background:rgba(255,255,255,.92);
-
     border-radius:20px;
-
+    margin:0 auto;
+    background:rgba(255,255,255,.92);
     text-align:center;
-
     box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
 }
 
 .card.show{
     display:block;
+    animation:fade .8s ease;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translate(-50%,-45%);
+    }
+    to{
+        opacity:1;
+        transform:translate(-50%,-50%);
+    }
 }
 
 

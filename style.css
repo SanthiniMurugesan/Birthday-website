@@ -1,4 +1,4 @@
-/* Reset */
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;400;500;600&display=swap');
 
 *{
     margin:0;
@@ -8,8 +8,12 @@
 
 body{
     font-family:'Poppins',sans-serif;
-    background:linear-gradient(135deg,#FFE8D6,#DFF7F2,#EEE6FF);
+    background:linear-gradient(135deg,#FFE8D6,#FDF6FF,#E8FFF7);
     overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
 
 /* Pages */
@@ -18,13 +22,10 @@ body{
     display:none;
     width:100%;
     height:100vh;
-
     justify-content:center;
     align-items:center;
-
-    padding:25px;
-
-    animation:fade .8s ease;
+    padding:20px;
+    animation:fade .7s ease;
 }
 
 .page.active{
@@ -35,17 +36,18 @@ body{
 
 .card{
     width:100%;
-    max-width:420px;
-
-    background:rgba(255,255,255,.92);
-
+    max-width:430px;
+    background:#fff;
+    padding:32px 25px;
     border-radius:25px;
-
-    padding:30px 25px;
-
     text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
 
-    box-shadow:0 15px 35px rgba(0,0,0,.08);
+/* Final Card */
+
+.ending{
+    background:linear-gradient(135deg,#FFF8FB,#F7FFF9,#F4F0FF);
 }
 
 /* Headings */
@@ -62,7 +64,7 @@ h2{
     font-size:24px;
     font-weight:600;
     color:#666;
-    margin-bottom:15px;
+    margin-bottom:18px;
 }
 
 /* Text */
@@ -70,10 +72,10 @@ h2{
 p{
     font-size:16px;
     color:#555;
-    line-height:1.6;
+    line-height:1.7;
 }
 
-/* Icons */
+/* Emojis */
 
 .emoji{
     font-size:60px;
@@ -81,58 +83,41 @@ p{
 }
 
 .icon{
-    font-size:35px;
+    font-size:34px;
     margin-bottom:15px;
 }
 
-/* Button */
+/* Buttons */
 
 .next-btn{
 
-    margin-top:25px;
-
-    padding:12px 28px;
-
+    margin-top:28px;
+    padding:13px 28px;
     border:none;
-
     border-radius:30px;
-
     background:#ff8fab;
-
     color:white;
-
     font-size:16px;
-
+    font-weight:500;
     cursor:pointer;
-
     transition:.3s;
 }
 
 .next-btn:hover{
 
     background:#ff6f91;
-
     transform:scale(1.05);
 
 }
 
-/* Final Card */
-
-.ending{
-
-    background:linear-gradient(135deg,#FFF5F8,#F4FFF9,#F3EEFF);
-
-}
+/* Footer */
 
 .footer{
 
-    margin-top:20px;
-
-    color:#777;
-
+    margin-top:25px;
     font-size:15px;
-
-    line-height:1.5;
+    line-height:1.7;
+    color:#666;
 
 }
 
@@ -141,78 +126,66 @@ p{
 #hearts{
 
     position:fixed;
-
     top:0;
-
     left:0;
-
     width:100%;
-
     height:100%;
-
     pointer-events:none;
-
     overflow:hidden;
-
 }
 
 .heart{
 
     position:absolute;
-
     bottom:-40px;
-
+    opacity:.9;
     animation:float linear infinite;
-
-    opacity:.8;
 
 }
 
-/* Animations */
+/* Fade */
 
 @keyframes fade{
 
-from{
+    from{
 
-opacity:0;
+        opacity:0;
+        transform:translateY(35px);
 
-transform:translateY(30px);
+    }
 
-}
+    to{
 
-to{
+        opacity:1;
+        transform:translateY(0);
 
-opacity:1;
-
-transform:translateY(0);
-
-}
+    }
 
 }
+
+/* Floating Hearts */
 
 @keyframes float{
 
-0%{
+    0%{
 
-transform:translateY(0);
+        transform:translateY(0);
+        opacity:0;
 
-opacity:0;
+    }
 
-}
+    20%{
 
-20%{
+        opacity:1;
 
-opacity:1;
+    }
 
-}
+    100%{
 
-100%{
+        transform:translateY(-120vh);
+        opacity:0;
 
-transform:translateY(-120vh);
-
-opacity:0;
-
-}
+    }
 
 }
 
@@ -222,32 +195,30 @@ opacity:0;
 
 .card{
 
-padding:25px 20px;
+    width:95%;
+    padding:26px 22px;
 
 }
 
 h1{
 
-font-size:52px;
+    font-size:52px;
 
 }
 
 h2{
 
-font-size:21px;
+    font-size:22px;
 
 }
 
 p{
 
-font-size:15px;
+    font-size:15px;
+    line-height:1.6;
 
 }
 
 .next-btn{
 
-width:100%;
-
-}
-
-}
+    width:

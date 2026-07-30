@@ -1,10 +1,10 @@
-// Get all pages
 const pages = document.querySelectorAll(".page");
+const heartsContainer = document.getElementById("hearts");
 
 let currentPage = 0;
 
 // Show first page
-pages[0].classList.add("active");
+pages[currentPage].classList.add("active");
 
 // Next page
 function nextPage() {
@@ -17,15 +17,23 @@ function nextPage() {
 
         pages[currentPage].classList.add("active");
 
-        // Celebration on last page
+        // Start celebration on the last page
         if (currentPage === pages.length - 1) {
             startCelebration();
         }
+
     }
+
 }
 
-// Start hearts + confetti
+// Celebration
+let celebrationStarted = false;
+
 function startCelebration() {
+
+    if (celebrationStarted) return;
+
+    celebrationStarted = true;
 
     createConfetti();
 
@@ -46,14 +54,16 @@ function createHeart() {
 
     heart.style.left = Math.random() * 100 + "vw";
 
-    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+    heart.style.fontSize = (18 + Math.random() * 18) + "px";
 
     heart.style.animationDuration = (5 + Math.random() * 4) + "s";
 
     heartsContainer.appendChild(heart);
 
     setTimeout(() => {
+
         heart.remove();
+
     }, 9000);
 
 }
@@ -61,7 +71,7 @@ function createHeart() {
 // Confetti
 function createConfetti() {
 
-    const emojis = ["🎉","🎊","✨","💖","🎂"];
+    const emojis = ["🎉","🎊","✨","🎂","💖"];
 
     for (let i = 0; i < 120; i++) {
 
@@ -72,17 +82,17 @@ function createConfetti() {
         confetti.style.position = "fixed";
         confetti.style.left = Math.random() * 100 + "vw";
         confetti.style.top = "-30px";
-        confetti.style.fontSize = (18 + Math.random() * 18) + "px";
+        confetti.style.fontSize = (16 + Math.random() * 18) + "px";
         confetti.style.pointerEvents = "none";
-        confetti.style.zIndex = "999";
+        confetti.style.zIndex = "9999";
 
         document.body.appendChild(confetti);
 
         let top = -30;
-        let left = parseFloat(confetti.style.left);
+        let left = Math.random() * 100;
 
         const speed = 2 + Math.random() * 3;
-        const drift = (Math.random() - 0.5) * 2;
+        const drift = (Math.random() - 0.5) * 0.5;
 
         const fall = setInterval(() => {
 
@@ -104,4 +114,3 @@ function createConfetti() {
     }
 
 }
-    

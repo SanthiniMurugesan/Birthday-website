@@ -1,14 +1,14 @@
-        // Get all pages
+// Get all pages
 const pages = document.querySelectorAll(".page");
-const heartContainer = document.getElementById("hearts");
+const heartsContainer = document.getElementById("hearts");
 
 let currentPage = 0;
 
 // Show first page
-pages[currentPage].classList.add("active");
+pages[0].classList.add("active");
 
-// Next page function
-function nextCard() {
+// Next page
+function nextPage() {
 
     pages[currentPage].classList.remove("active");
 
@@ -18,25 +18,23 @@ function nextCard() {
 
         pages[currentPage].classList.add("active");
 
-        // Start celebration on the final page
-        if (pages[currentPage].querySelector(".ending")) {
-            startHearts();
-            confetti();
+        // Celebration on last page
+        if (currentPage === pages.length - 1) {
+            startCelebration();
         }
     }
 }
 
-// Floating Hearts (only on last page)
+// Start hearts + confetti
+function startCelebration() {
 
-let heartInterval = null;
+    createConfetti();
 
-function startHearts() {
+    setInterval(createHeart, 400);
 
-    if (heartInterval) return; // Prevent multiple intervals
-
-    heartInterval = setInterval(createHeart, 500);
 }
 
+// Floating Hearts
 function createHeart() {
 
     const heart = document.createElement("div");
@@ -48,56 +46,63 @@ function createHeart() {
     heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
 
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (18 + Math.random() * 18) + "px";
-    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
 
-    heartContainer.appendChild(heart);
+    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+
+    heart.style.animationDuration = (5 + Math.random() * 4) + "s";
+
+    heartsContainer.appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
-    }, 10000);
+    }, 9000);
+
 }
 
 // Confetti
-
-function confetti() {
+function createConfetti() {
 
     const emojis = ["🎉","🎊","✨","💖","🎂"];
 
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 120; i++) {
 
-        const piece = document.createElement("div");
+        const confetti = document.createElement("div");
 
-        piece.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        confetti.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
 
-        piece.style.position = "fixed";
-        piece.style.left = Math.random() * 100 + "vw";
-        piece.style.top = "-20px";
-        piece.style.fontSize = (18 + Math.random() * 14) + "px";
-        piece.style.pointerEvents = "none";
-        piece.style.zIndex = "9999";
+        confetti.style.position = "fixed";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.top = "-30px";
+        confetti.style.fontSize = (18 + Math.random() * 18) + "px";
+        confetti.style.pointerEvents = "none";
+        confetti.style.zIndex = "999";
 
-        document.body.appendChild(piece);
+        document.body.appendChild(confetti);
 
-        let y = -20;
-        let x = parseFloat(piece.style.left);
+        let top = -30;
+        let left = parseFloat(confetti.style.left);
 
         const speed = 2 + Math.random() * 3;
         const drift = (Math.random() - 0.5) * 2;
 
         const fall = setInterval(() => {
 
-            y += speed;
-            x += drift;
+            top += speed;
+            left += drift;
 
-            piece.style.top = y + "px";
-            piece.style.left = x + "vw";
+            confetti.style.top = top + "px";
+            confetti.style.left = left + "vw";
 
-            if (y > window.innerHeight) {
+            if (top > window.innerHeight) {
+
                 clearInterval(fall);
-                piece.remove();
+                confetti.remove();
+
             }
 
         }, 20);
+
     }
+
 }
+    

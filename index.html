@@ -12,7 +12,144 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#FFE8D6,#FDF6FF,#EAFBF7);
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.page{
+display:none;
+width:100%;
+height:100vh;
+justify-content:center;
+align-items:center;
+padding:25px;
+animation:fade .8s ease;
+}
+
+.page.active{
+display:flex;
+}
+
+.card{
+width:100%;
+max-width:420px;
+background:white;
+padding:30px 25px;
+border-radius:25px;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+text-align:center;
+}
+
+h1{
+font-family:'Sacramento',cursive;
+font-size:58px;
+color:#ff6f91;
+font-weight:400;
+margin-bottom:8px;
+}
+
+h2{
+font-size:23px;
+color:#666;
+margin-bottom:15px;
+}
+
+p{
+font-size:16px;
+line-height:1.7;
+color:#555;
+}
+
+.emoji{
+font-size:60px;
+margin-bottom:10px;
+}
+
+.icon{
+font-size:35px;
+margin-bottom:15px;
+}
+
+.next-btn{
+margin-top:25px;
+padding:12px 26px;
+border:none;
+border-radius:30px;
+background:#ff8fab;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+.next-btn:hover{
+transform:scale(1.05);
+background:#ff6f91;
+}
+
+.footer{
+margin-top:20px;
+font-size:14px;
+color:#777;
+line-height:1.5;
+}
+
+#hearts{
+position:fixed;
+width:100%;
+height:100%;
+left:0;
+top:0;
+pointer-events:none;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+bottom:-40px;
+animation:float 8s linear infinite;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+</style>
 
 </head>
 
@@ -30,14 +167,12 @@
 
 <h1>Happiest Birthday</h1>
 
-<h2>My Headache ❤️</h2>
-
 <p>
-For the one who never misses a chance
-to irritate me. 👊🏻
+to the one who never misses
+a chance to irritate me.👊🏻
 </p>
 
-<button class="next-btn" onclick="nextCard()">
+<button class="next-btn" onclick="nextPage()">
 🦧 Click Me
 </button>
 
@@ -57,14 +192,13 @@ to irritate me. 👊🏻
 Happiest Birthday daaa! 🎂
 </p>
 
-<button class="next-btn" onclick="nextCard()">
+<button class="next-btn" onclick="nextPage()">
 🐒 Dei... Here
 </button>
 
 </div>
 
 </section>
-
 <!-- PAGE 3 -->
 
 <section class="page">
@@ -74,11 +208,11 @@ Happiest Birthday daaa! 🎂
 <div class="icon">💌</div>
 
 <p>
-You're the one who boils my blood
-every single day. 😤
+You're the one who boils
+my blood every single day. 😤
 </p>
 
-<button class="next-btn" onclick="nextCard()">
+<button class="next-btn" onclick="nextPage()">
 🐮 Keep Going
 </button>
 
@@ -101,10 +235,218 @@ Life would feel a little boring
 without your nonsense. 💗
 </p>
 
-<button class="next-btn" onclick="nextCard()">
+<button class="next-btn" onclick="nextPage()">
 🐷 One Last Click
 </button>
 
 </div>
 
 </section>
+
+<!-- PAGE 5 -->
+
+<section class="page">
+
+<div class="card">
+
+<div class="icon">💌</div>
+
+<p>
+
+Thank you... 🤍
+
+<br><br>
+
+• For every laugh.
+
+<br>
+
+• For every stupid argument.
+
+<br>
+
+• For irritating me every single day.
+
+<br>
+
+• For never letting me have a peaceful moment.
+
+<br>
+
+• For every "I'm going to kill you" moment.
+
+<br>
+
+• And every reason to smile after it. 💗
+
+</p>
+
+<button class="next-btn" onclick="nextPage()">
+🙄 Don't Stop Now
+</button>
+
+</div>
+
+</section>
+
+  <!-- PAGE 6 -->
+
+<section class="page">
+
+<div class="card">
+
+<div class="icon">💌</div>
+
+<p>
+
+Stay Happy.
+<br><br>
+
+Stay Healthy.
+<br><br>
+
+Stay exactly the same
+annoying one. 💗
+
+</p>
+
+<button class="next-btn" onclick="nextPage()">
+🎂 Happy Birthday, Idiot ❤️
+</button>
+
+</div>
+
+</section>
+
+<!-- FINAL PAGE -->
+
+<section class="page">
+
+<div class="card">
+
+<div class="emoji">🎉</div>
+
+<h1>Once Again...</h1>
+
+<h2>Happy Birthday Deyy! ❤️</h2>
+<p>
+
+At least show some concern
+from now onwards. 🤌🏼
+<br>
+If not...
+I'll become your
+biggest headache. 😌
+</p>
+
+<div class="footer">
+
+Made with ❤️
+<br>
+by the girl who never gets
+the "girl treatment" from you. 😌
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+const pages = document.querySelectorAll(".page");
+let current = 0;
+
+function nextPage(){
+
+pages[current].classList.remove("active");
+
+current++;
+
+if(current < pages.length){
+
+pages[current].classList.add("active");
+
+if(current === pages.length-1){
+
+celebrate();
+
+}
+
+}
+
+}
+
+function celebrate(){
+
+const heartContainer=document.getElementById("hearts");
+
+setInterval(()=>{
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+const emojis=["❤️","💖","💕","💗","🤍"];
+
+heart.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(18+Math.random()*20)+"px";
+
+heart.style.animationDuration=(5+Math.random()*4)+"s";
+
+heartContainer.appendChild(heart);
+
+setTimeout(()=>heart.remove(),9000);
+
+},350);
+
+for(let i=0;i<120;i++){
+
+const confetti=document.createElement("div");
+
+confetti.innerHTML=["🎉","🎊","✨","💖","🎂"][Math.floor(Math.random()*5)];
+
+confetti.style.position="fixed";
+confetti.style.left=Math.random()*100+"vw";
+confetti.style.top="-30px";
+confetti.style.fontSize=(18+Math.random()*18)+"px";
+confetti.style.pointerEvents="none";
+confetti.style.zIndex="999";
+
+document.body.appendChild(confetti);
+
+let top=-30;
+let left=parseFloat(confetti.style.left);
+
+const speed=2+Math.random()*3;
+const drift=(Math.random()-.5)*2;
+
+const fall=setInterval(()=>{
+
+top+=speed;
+left+=drift;
+
+confetti.style.top=top+"px";
+confetti.style.left=left+"vw";
+
+if(top>window.innerHeight){
+
+clearInterval(fall);
+confetti.remove();
+
+}
+
+},20);
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>

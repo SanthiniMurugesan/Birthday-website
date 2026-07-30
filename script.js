@@ -1,102 +1,98 @@
 const cards = document.querySelectorAll(".card");
 const heartContainer = document.getElementById("hearts");
 
-let current = 0;
+let currentCard = 0;
 
 // Show first card
-cards[current].classList.add("show");
+cards[currentCard].classList.add("show");
 
-// Automatically change cards
-setInterval(() => {
+// Next card function
+function nextCard() {
 
-    cards[current].classList.remove("show");
+    cards[currentCard].classList.remove("show");
 
-    current++;
+    currentCard++;
 
-    if(current < cards.length){
+    if (currentCard < cards.length) {
 
-        cards[current].classList.add("show");
+        cards[currentCard].classList.add("show");
 
-        if(cards[current].classList.contains("ending")){
+        // Show confetti on the final card
+        if (cards[currentCard].classList.contains("ending")) {
             confetti();
         }
-
     }
-
-},3000);
-
+}
 
 // Floating Hearts
 
-function createHeart(){
+function createHeart() {
 
-    const heart=document.createElement("div");
+    const heart = document.createElement("div");
 
-    heart.className="heart";
+    heart.className = "heart";
 
-    const hearts=["💖","💕","💗","🤍","💜"];
+    const hearts = ["❤️","💖","💕","💗","🤍"];
 
-    heart.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
+    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
 
-    heart.style.left=Math.random()*100+"vw";
+    heart.style.left = Math.random() * 100 + "vw";
 
-    heart.style.fontSize=(18+Math.random()*18)+"px";
+    heart.style.fontSize = (18 + Math.random() * 18) + "px";
 
-    heart.style.animationDuration=(5+Math.random()*5)+"s";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
 
     heartContainer.appendChild(heart);
 
-    setTimeout(()=>heart.remove(),10000);
-
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
 }
 
-setInterval(createHeart,500);
-
+setInterval(createHeart, 600);
 
 // Confetti
 
-function confetti(){
+function confetti() {
 
-    const emoji=["🎉","🎊","✨","💖","🎂"];
+    const emojis = ["🎉","🎊","✨","💖","🎂"];
 
-    for(let i=0;i<80;i++){
+    for (let i = 0; i < 80; i++) {
 
-        const piece=document.createElement("div");
+        const piece = document.createElement("div");
 
-        piece.innerHTML=emoji[Math.floor(Math.random()*emoji.length)];
+        piece.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
 
-        piece.style.position="fixed";
-        piece.style.left=Math.random()*100+"vw";
-        piece.style.top="-20px";
-        piece.style.fontSize=(18+Math.random()*18)+"px";
-        piece.style.zIndex="9999";
+        piece.style.position = "fixed";
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.top = "-20px";
+        piece.style.fontSize = (18 + Math.random() * 15) + "px";
+        piece.style.pointerEvents = "none";
+        piece.style.zIndex = "9999";
 
         document.body.appendChild(piece);
 
-        let y=-20;
-        let x=parseFloat(piece.style.left);
+        let y = -20;
+        let x = parseFloat(piece.style.left);
 
-        const speed=2+Math.random()*3;
-        const drift=(Math.random()-0.5)*2;
+        const speed = 2 + Math.random() * 3;
+        const drift = (Math.random() - 0.5) * 2;
 
-        const fall=setInterval(()=>{
+        const fall = setInterval(() => {
 
-            y+=speed;
-            x+=drift;
+            y += speed;
+            x += drift;
 
-            piece.style.top=y+"px";
-            piece.style.left=x+"vw";
+            piece.style.top = y + "px";
+            piece.style.left = x + "vw";
 
-            if(y>window.innerHeight){
+            if (y > window.innerHeight) {
 
                 clearInterval(fall);
-
                 piece.remove();
 
             }
 
-        },20);
-
+        }, 20);
     }
-
-}
+            }

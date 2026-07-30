@@ -1,101 +1,101 @@
-// Get all pages
-const pages = document.querySelectorAll(".page");
-
-let currentPage = 0;
-
-// Change pages
-function nextPage() {
-
-    if (currentPage < pages.length - 1) {
-
-        pages[currentPage].classList.remove("active");
-
-        currentPage++;
-
-        pages[currentPage].classList.add("active");
-
-        // Show confetti on Page 6
-        if (currentPage === 5) {
-            confetti();
-        }
-    }
-}
-
-// Floating Hearts
+const cards = document.querySelectorAll(".card");
 const heartContainer = document.getElementById("hearts");
 
-function createHeart() {
+let current = 0;
 
-    const heart = document.createElement("div");
+// Show first card
+cards[current].classList.add("show");
 
-    heart.classList.add("heart");
+// Automatically change cards
+setInterval(() => {
 
-    const hearts = ["❤️", "💖", "💗", "💕"];
+    cards[current].classList.remove("show");
 
-    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+    current++;
 
-    heart.style.left = Math.random() * 100 + "vw";
+    if(current < cards.length){
 
-    heart.style.fontSize = (18 + Math.random() * 15) + "px";
+        cards[current].classList.add("show");
 
-    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+        if(cards[current].classList.contains("ending")){
+            confetti();
+        }
+
+    }
+
+},3000);
+
+
+// Floating Hearts
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    const hearts=["💖","💕","💗","🤍","💜"];
+
+    heart.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.fontSize=(18+Math.random()*18)+"px";
+
+    heart.style.animationDuration=(5+Math.random()*5)+"s";
 
     heartContainer.appendChild(heart);
 
-    setTimeout(() => {
-        heart.remove();
-    }, 10000);
+    setTimeout(()=>heart.remove(),10000);
 
 }
 
-setInterval(createHeart, 500);
+setInterval(createHeart,500);
+
 
 // Confetti
-function confetti() {
 
-    const emojis = ["🎉", "🎊", "✨", "💖", "🎂"];
+function confetti(){
 
-    for (let i = 0; i < 80; i++) {
+    const emoji=["🎉","🎊","✨","💖","🎂"];
 
-        const piece = document.createElement("div");
+    for(let i=0;i<80;i++){
 
-        piece.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        const piece=document.createElement("div");
 
-        piece.style.position = "fixed";
+        piece.innerHTML=emoji[Math.floor(Math.random()*emoji.length)];
 
-        piece.style.left = Math.random() * 100 + "vw";
-
-        piece.style.top = "-20px";
-
-        piece.style.fontSize = (18 + Math.random() * 20) + "px";
-
-        piece.style.zIndex = "999";
-
-        piece.style.pointerEvents = "none";
+        piece.style.position="fixed";
+        piece.style.left=Math.random()*100+"vw";
+        piece.style.top="-20px";
+        piece.style.fontSize=(18+Math.random()*18)+"px";
+        piece.style.zIndex="9999";
 
         document.body.appendChild(piece);
 
-        let y = -20;
-        let x = parseFloat(piece.style.left);
+        let y=-20;
+        let x=parseFloat(piece.style.left);
 
-        const speed = 2 + Math.random() * 4;
+        const speed=2+Math.random()*3;
+        const drift=(Math.random()-0.5)*2;
 
-        const drift = (Math.random() - 0.5) * 2;
+        const fall=setInterval(()=>{
 
-        const fall = setInterval(() => {
+            y+=speed;
+            x+=drift;
 
-            y += speed;
-            x += drift;
+            piece.style.top=y+"px";
+            piece.style.left=x+"vw";
 
-            piece.style.top = y + "px";
-            piece.style.left = x + "vw";
+            if(y>window.innerHeight){
 
-            if (y > window.innerHeight) {
                 clearInterval(fall);
+
                 piece.remove();
+
             }
 
-        }, 20);
+        },20);
 
     }
 
